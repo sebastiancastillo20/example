@@ -1,0 +1,21 @@
+SetMesh(200, 1, 1, 1e-09, 1e-09, 1e-9, 0, 0, 0)
+
+Msat         = 0.86e6
+Aex          = 13.0e-12
+Ku1          = 0.4e6
+anisU        = vector(0, 0, 1)
+Dbulk        = 3.0e-3
+NoDemagSpins = 1
+
+// Initial state
+m.setRegion(0, uniform(0, 0, 1))
+
+OutputFormat = OVF2_TEXT
+
+// Relax with specific torque:
+// alpha       = 0.9
+// RunWhile(MaxTorque > 1e-4)
+
+// Relax with conjugate gradient:
+minimize();
+SaveAs(m, "one_dim_bulk")
